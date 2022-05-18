@@ -2,7 +2,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-const { endpoint, domain, index } = params;
+const { endpoint, domain, index, edge } = params;
 
 console.log(params);
 
@@ -24,6 +24,11 @@ if (index) {
   console.log(`Adding ${index} to index field`);
   document.getElementById("index").value = index;
   changed++;
+}
+
+if (edge) {
+  console.log(`Adding ${edge} to the edge field`);
+  document.getElementById("edge").value = edge;
 }
 
 if (changed == 3) {
