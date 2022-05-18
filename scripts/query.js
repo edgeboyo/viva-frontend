@@ -4,23 +4,28 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 const { endpoint, domain, index } = params;
 
+console.log(params);
+
 var changed = 0;
 
-if (endpoint !== undefined) {
+if (endpoint) {
+  console.log(`Adding ${endpoint} to endpoint field`);
   document.getElementById("endpoint").value += endpoint;
   changed++;
 }
 
-if (domain !== undefined) {
+if (domain) {
+  console.log(`Adding ${domain} to domain field`);
   document.getElementById("domain").value += domain;
   changed++;
 }
 
-if (index !== undefined) {
-  document.getElementById("index").value += index;
+if (index) {
+  console.log(`Adding ${index} to index field`);
+  document.getElementById("index").value = index;
   changed++;
 }
 
-if( changed == 3) {
-  // Run query
+if (changed == 3) {
+  runQuery(); // imported from scripts/demo.js
 }
